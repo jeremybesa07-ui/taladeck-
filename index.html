@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TalaDeck — Your study space</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#" data-page="home"><i>✦</i>Tala<span>Deck</span></a>
+  <nav>
+    <button class="nav active" data-page="home">⌂ <span>Home</span></button>
+    <button class="nav" data-page="flashcards">▤ <span>My Flashcards</span></button>
+    <button class="nav" data-page="notes">▧ <span>My Notes</span></button>
+    <button class="nav" data-page="study">✧ <span>Study &amp; Review</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="tip"><strong>A little progress goes a long way.</strong><br><small>Keep showing up for yourself.</small></div>
+    <button class="nav" data-page="settings">⚙ <span>Settings</span></button>
+    <div class="user-mini"><div class="avatar" id="sideAvatar">J</div><div><b id="sideName">Jem</b><small id="sideHandle">@jem</small></div><button class="dots" data-page="profile" aria-label="Profile">···</button></div>
+  </div>
+</aside>
+<main>
+<header class="topbar"><button class="menu icon" id="menuToggle" aria-label="Menu">☰</button><div>Your learning space / <b id="crumb">Home</b></div>
+<div class="top-actions"><small id="today"></small><button class="profile-chip" data-page="profile"><div class="avatar tiny" id="topAvatar">J</div><span id="topName">Jem</span></button></div></header>
+<div class="content">
+<section class="page active" id="page-home">
+ <div class="heading-row"><div><small>Your personal study space</small><h1 id="greeting">Hello!</h1><p class="muted">Ready to make today a little more productive?</p></div><button class="primary" data-action="new-deck">＋ Create flashcards</button></div>
+ <div class="quote"><div>✧</div><div><b>“Small steps every day lead to big achievements.”</b><small>A gentle reminder for your learning journey</small></div></div>
+ <div class="stats">
+  <article><i>▤</i><div><small>Flashcard decks</small><strong id="deckCount">0</strong></div></article>
+  <article><i class="olive">▧</i><div><small>Saved notes</small><strong id="noteCount">0</strong></div></article>
+  <article><i class="clay">✧</i><div><small>Study sessions</small><strong id="sessionCount">0</strong></div></article>
+  <article><i class="olive">✦</i><div><small>Best streak</small><strong id="bestStreak">0</strong></div></article>
+ </div>
+ <section class="panel" style="margin-bottom:16px"><div class="panel-head"><h2>Today’s goal</h2><small id="goalTxt"></small></div><div class="bar"><i id="goalBar" style="width:0"></i></div><small id="dayStreak"></small></section>
+ <div class="columns">
+  <section class="panel"><div class="panel-head"><h2>Recent flashcards</h2><button class="text-btn" data-page="flashcards">View all</button></div><div id="recentDecks"></div></section>
+  <section class="panel"><h2>Quick actions</h2>
+   <button class="quick" data-action="new-deck"><i>＋</i><span><b>Create flashcards</b><small>Turn your lessons into cards</small></span></button>
+   <button class="quick" data-action="new-note"><i class="olive">▧</i><span><b>Write a new note</b><small>Save important information</small></span></button>
+   <button class="quick" data-page="study"><i class="clay">✧</i><span><b>Start studying</b><small>Type your answers from memory</small></span></button>
+  </section>
+ </div>
+</section>
+<section class="page" id="page-flashcards">
+ <div class="heading-row"><div><h1>My Flashcards</h1><p class="muted">Build your decks, one question at a time.</p></div><button class="primary" data-action="new-deck">＋ New deck</button></div>
+ <div class="toolbar"><label class="search">⌕ <input id="deckSearch" placeholder="Search decks and cards..."></label><small id="deckCountLabel"></small></div><div class="deck-grid" id="deckGrid"></div>
+</section>
+<section class="page" id="page-notes">
+ <div class="heading-row"><div><h1>My Notes</h1><p class="muted">Keep your lessons and ideas in one place.</p></div><button class="primary" data-action="new-note">＋ New note</button></div>
+ <div class="toolbar"><label class="search">⌕ <input id="noteSearch" placeholder="Search notes by title or content..."></label><small id="noteCountLabel"></small></div><div class="note-grid" id="noteGrid"></div>
+</section>
+<section class="page" id="page-study">
+ <div class="heading-row"><div><h1>Study &amp; Review</h1><p class="muted">Type each answer from memory.</p></div></div>
+ <div class="study-layout"><section class="panel"><small>Mode</small><div class="modes"><button class="mode on" data-mode="type">Type</button><button class="mode" data-mode="choice">Choice</button><button class="mode" data-mode="flip">Flip</button></div><h2>Choose a deck</h2><div id="studyChoices" class="choices"></div></section><section class="panel" id="studyBox"><div class="empty"><div>✧</div><h2>Your next study session starts here.</h2><p>Select a flashcard deck to begin.</p></div></section></div>
+</section>
+<section class="page narrow" id="page-profile">
+ <div class="heading-row"><div><h1>My Profile</h1><p class="muted">A little space that’s all yours.</p></div></div>
+ <section class="panel"><div class="profile-large"><div class="avatar large" id="profileAvatar">J</div><div><h2 id="profileHeading">Jem</h2><small>Study space member</small></div></div>
+ <form id="profileForm" class="form"><label>Display name<input id="displayName" maxlength="32" required></label><label>Username<input id="username" maxlength="24" required></label><button class="primary">Save profile</button><small id="profileFeedback" class="success"></small></form></section>
+</section>
+<section class="page narrow" id="page-settings">
+ <div class="heading-row"><div><h1>Settings</h1><p class="muted">Set up TalaDeck the way you like it.</p></div></div>
+ <section class="panel">
+  <div class="setting"><i>⇩</i><div><b>Backup</b><small>Save all decks and notes to a file, or restore from one.</small></div><button class="outline" id="exportBtn">Export</button><label class="outline" style="cursor:pointer">Import<input type="file" id="importFile" accept=".json,application/json" hidden></label></div>
+  <div class="setting"><i>◐</i><div><b>Dark Mode</b><small>Switch to a darker color theme.</small></div><label class="switch"><input type="checkbox" id="dark" aria-label="Dark mode"><span></span></label></div>
+ </section><p class="muted footnote">Your notes and flashcards are stored in this browser.</p>
+</section>
+</div><footer>Made for curious minds ✦ TalaDeck</footer>
+</main>
+<div class="backdrop hidden" id="modalBackdrop"><section class="modal" role="dialog" aria-modal="true"><div class="modal-head"><h2 id="modalTitle">New deck</h2><button class="icon" id="modalClose" aria-label="Close">×</button></div><div id="modalBody"></div></section></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script></body></html>
